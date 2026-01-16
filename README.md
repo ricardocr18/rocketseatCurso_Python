@@ -45,4 +45,4 @@ sample-flask-auth/
 ```
 
 ## 🗃️ Modelo de Dados
-Tabela user
+Tabela `user`
