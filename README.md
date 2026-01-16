@@ -45,14 +45,13 @@ sample-flask-auth/
 ```
 
 ## 🗃️ Modelo de Dados
-### Tabela `user`
-```python
+### Tabela `` `user` ``
 ```
  id          # Integer, PK
 username    # String(80), único
 password    # String(50)
 ```
-Tabela `**meal**`
+### Tabela `**meal**`
 ```
 id          # Integer, PK
 name        # String(100)
