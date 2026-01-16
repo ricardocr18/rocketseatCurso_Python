@@ -2,6 +2,7 @@
 
 API REST completa para controle de dieta diária com autenticação de usuários e gerenciamento de refeições.
 
+
 ## 📋 Sobre o Projeto
 Uma API desenvolvida em Flask que permite aos usuários registrar e acompanhar suas refeições diárias. O sistema oferece autenticação baseada em sessões, CRUD completo de usuários e refeições, além de métricas sobre a dieta.
 
@@ -31,6 +32,7 @@ Flask-SQLAlchemy - ORM para banco de dados
 Flask-Login - Gerenciamento de sessões
 SQLite - Banco de dados relacional
 
+
 ## 📁 Estrutura do Projeto
 ```
 sample-flask-auth/
@@ -43,6 +45,7 @@ sample-flask-auth/
 │   └── database.db       # Banco SQLite (criado automaticamente)
 └── requirements.txt      # Dependências do projeto
 ```
+
 
 ## 🗃️ Modelo de Dados
 ### Tabela `` `user` ``
@@ -96,5 +99,55 @@ Resposta (200):
 ```
 ## 👤 Usuários
 Criar Usuário
+```
+POST /user
+Content-Type: application/json
 
+{
+    "username": "joao",
+    "password": "456"
+}
+```
+
+Resposta (201):
+
+```
+{
+    "message": "Usuário criado com sucesso",
+    "user": {
+        "id": 2,
+        "username": "joao"
+    }
+}
+```
+Buscar Usuário
+```
+GET /user/1
+Authorization: Required (login)
+```
+Resposta (200):
+```
+{
+    "id": 1,
+    "username": "maria",
+    "total_meals": 5
+}
+```
+Atualizar Usuário
+```
+PUT /user/1
+Authorization: Required (login)
+Content-Type: application/json
+
+{
+    "username": "maria_silva",
+    "password": "nova_senha"
+}
+```
+Resposta (200):
+```
+{
+    "message": "Usuário atualizado com sucesso"
+}
+```
 
