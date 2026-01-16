@@ -2,6 +2,10 @@
 
 API REST completa para controle de dieta diária com autenticação de usuários e gerenciamento de refeições.
 
+## 📥 Clonar o Repositório
+```
+git clone https://github.com/ricardocr18/rocketseatCurso_Python.git nivel2Desafio
+```
 
 ## 📋 Sobre o Projeto
 Uma API desenvolvida em Flask que permite aos usuários registrar e acompanhar suas refeições diárias. O sistema oferece autenticação baseada em sessões, CRUD completo de usuários e refeições, além de métricas sobre a dieta.
@@ -150,4 +154,156 @@ Resposta (200):
     "message": "Usuário atualizado com sucesso"
 }
 ```
+Deletar Usuário
+```
+DELETE /user/2
+Authorization: Required (login)
+```
+Resposta (200):
+```
+{
+    "message": "Usuário deletado com sucesso"
+}
+```
+⚠️ Nota: Não é possível deletar o próprio usuário enquanto logado.
+
+## 🍽️ Refeições
+
+Criar Refeição
+```
+POST /meal
+Authorization: Required (login)
+Content-Type: application/json
+
+{
+    "name": "Café da manhã",
+    "description": "Ovos mexidos com torrada integral",
+    "date_time": "2026-01-16T08:00:00",
+    "is_on_diet": true
+}
+```
+Resposta (201):
+```
+{
+    "message": "Refeição criada com sucesso",
+    "meal": {
+        "id": 1,
+        "name": "Café da manhã",
+        "description": "Ovos mexidos com torrada integral",
+        "date_time": "2026-01-16T08:00:00",
+        "is_on_diet": true,
+        "user_id": 1
+    }
+}
+```
+
+Listar Todas as Refeições
+```
+GET /meals
+Authorization: Required (login)
+```
+Resposta (200):
+```
+{
+    "meals": [
+        {
+            "id": 1,
+            "name": "Café da manhã",
+            "description": "Ovos mexidos",
+            "date_time": "2026-01-16T08:00:00",
+            "is_on_diet": true,
+            "user_id": 1
+        }
+    ],
+    "total": 1
+}
+```
+
+Buscar Refeição Específica
+```
+GET /meal/1
+Authorization: Required (login)
+```
+Resposta (200):
+```
+{
+    "id": 1,
+    "name": "Café da manhã",
+    "description": "Ovos mexidos",
+    "date_time": "2026-01-16T08:00:00",
+    "is_on_diet": true,
+    "user_id": 1
+}
+```
+
+Atualizar Refeição
+```
+PUT /meal/1
+Authorization: Required (login)
+Content-Type: application/json
+
+{
+    "name": "Café da manhã MODIFICADO",
+    "description": "Tapioca com queijo",
+    "date_time": "2026-01-16T08:30:00",
+    "is_on_diet": false
+}
+```
+Resposta (200):
+```
+{
+    "message": "Refeição atualizada com sucesso",
+    "meal": {
+        "id": 1,
+        "name": "Café da manhã MODIFICADO",
+        "description": "Tapioca com queijo",
+        "date_time": "2026-01-16T08:30:00",
+        "is_on_diet": false,
+        "user_id": 1
+    }
+}
+```
+
+Deletar Refeição
+```
+DELETE /meal/1
+Authorization: Required (login)
+```
+
+Resposta (200):
+```
+{
+    "message": "Refeição deletada com sucesso"
+}
+```
+
+Buscar Usuário com Suas Refeições
+```
+GET /user/1/meals
+Authorization: Required (login)
+```
+Resposta (200):
+```
+{
+    "user": {
+        "id": 1,
+        "username": "maria"
+    },
+    "meals": [
+        {
+            "id": 1,
+            "name": "Café da manhã",
+            "description": "...",
+            "date_time": "2026-01-16T08:00:00",
+            "is_on_diet": true,
+            "user_id": 1
+        }
+    ],
+    "total_meals": 1
+}
+```
+
+## 🔧 Como Executar
+
+
 
