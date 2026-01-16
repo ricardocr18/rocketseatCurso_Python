@@ -2,11 +2,6 @@
 
 API REST completa para controle de dieta diária com autenticação de usuários e gerenciamento de refeições.
 
-## 📥 Clonar o Repositório
-```
-git clone https://github.com/ricardocr18/rocketseatCurso_Python.git nivel2Desafio
-```
-
 ## 📋 Sobre o Projeto
 Uma API desenvolvida em Flask que permite aos usuários registrar e acompanhar suas refeições diárias. O sistema oferece autenticação baseada em sessões, CRUD completo de usuários e refeições, além de métricas sobre a dieta.
 
@@ -303,7 +298,64 @@ Resposta (200):
 }
 ```
 
-## 🔧 Como Executar
+## 🚀 Como Executar
 
+### 1️⃣ **Clonar o repositório**
+
+```bash
+git clone -b nivel2Desafio https://github.com/ricardocr18/rocketseatCurso_Python.git nivel2Desafio
+cd nivel2Desafio
+```
+
+### 2️⃣ **Criar ambiente virtual**
+
+```bash
+python -m venv .venv
+```
+
+**Ativar no Windows:**
+```bash
+.venv\Scripts\activate
+```
+
+**Ativar no Linux/Mac:**
+```bash
+source .venv/bin/activate
+```
+
+### 3️⃣ **Instalar dependências**
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4️⃣ **Executar a aplicação**
+
+```bash
+python app.py
+```
+
+Servidor rodando em: http://127.0.0.1:5000
+
+## 📦 Dependências
+```
+Flask==2.3.0
+Flask-SQLAlchemy==3.1.1
+Flask-Login==0.6.2
+Werkzeug==2.3.0
+```
+
+## 🧪 Testando com Postman
+### Fluxo Completo
+Criar usuário: POST http://127.0.0.1:5000/user
+Fazer login: POST http://127.0.0.1:5000/login
+Criar refeição: POST http://127.0.0.1:5000/meal
+Ver todas as refeições: GET http://127.0.0.1:5000/meals
+Logout: GET http://127.0.0.1:5000/logout
+
+Observação: É necessario estar logado para executar as ações
+
+## 👨‍💻 Autor
+Ricardo C. Ribeiro
 
 
