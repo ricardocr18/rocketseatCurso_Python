@@ -32,6 +32,7 @@ Flask-Login - Gerenciamento de sessões
 SQLite - Banco de dados relacional
 
 ## 📁 Estrutura do Projeto
+```
 sample-flask-auth/
 ├── app.py                 # Rotas e lógica principal
 ├── database.py            # Configuração do SQLAlchemy
@@ -41,6 +42,7 @@ sample-flask-auth/
 ├── instance/
 │   └── database.db       # Banco SQLite (criado automaticamente)
 └── requirements.txt      # Dependências do projeto
+```
 
 ## 🗃️ Modelo de Dados
 Tabela user
