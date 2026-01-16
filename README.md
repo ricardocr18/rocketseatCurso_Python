@@ -44,7 +44,7 @@ sample-flask-auth/
 │   └── database.db       # Banco SQLite (criado automaticamente)
 └── requirements.txt      # Dependências do projeto
 ```
-<br><br>
+<br>
 
 ## 🗃️ Modelo de Dados
 ### Tabela `` `user` ``
@@ -63,7 +63,7 @@ is_on_diet  # Boolean
 user_id     # Integer, FK → user.id
 ```
 
-Relacionamento: 1 usuário → N refeições
+Relacionamento: 1 usuário → N refeições<br><br>
 
 ## 🛣️ Rotas da API
 ### 🔑 Autenticação
@@ -96,6 +96,7 @@ Resposta (200):
     "message": "Logout realizado com sucesso"
 }
 ```
+<br><br>
 ## 👤 Usuários
 Criar Usuário
 ```
@@ -160,7 +161,7 @@ Resposta (200):
     "message": "Usuário deletado com sucesso"
 }
 ```
-⚠️ Nota: Não é possível deletar o próprio usuário enquanto logado.
+⚠️ Nota: Não é possível deletar o próprio usuário enquanto logado.<br><br>
 
 ## 🍽️ Refeições
 
@@ -297,7 +298,7 @@ Resposta (200):
     "total_meals": 1
 }
 ```
-
+<br><br>
 ## 🚀 Como Executar
 
 ### 1️⃣ **Clonar o repositório**
@@ -335,7 +336,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Servidor rodando em: http://127.0.0.1:5000
+Servidor rodando em: http://127.0.0.1:5000<br><br>
 
 ## 📦 Dependências
 ```
@@ -344,6 +345,7 @@ Flask-SQLAlchemy==3.1.1
 Flask-Login==0.6.2
 Werkzeug==2.3.0
 ```
+<br><br>
 
 ## 🧪 Testando com Postman
 ### Fluxo Completo
@@ -353,7 +355,7 @@ Criar refeição: POST http://127.0.0.1:5000/meal
 Ver todas as refeições: GET http://127.0.0.1:5000/meals
 Logout: GET http://127.0.0.1:5000/logout
 
-Observação: É necessario estar logado para executar as ações
+Observação: É necessario estar logado para executar as ações<br><br>
 
 ## 👨‍💻 Autor
 Ricardo C. Ribeiro
