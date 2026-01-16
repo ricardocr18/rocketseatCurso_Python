@@ -349,11 +349,13 @@ Werkzeug==2.3.0
 
 ## 🧪 Testando com Postman
 ### Fluxo Completo
+```
 Criar usuário: POST http://127.0.0.1:5000/user
 Fazer login: POST http://127.0.0.1:5000/login
 Criar refeição: POST http://127.0.0.1:5000/meal
 Ver todas as refeições: GET http://127.0.0.1:5000/meals
 Logout: GET http://127.0.0.1:5000/logout
+```
 
 Observação: É necessario estar logado para executar as ações<br><br>
 
