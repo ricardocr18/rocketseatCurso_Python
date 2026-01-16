@@ -6,18 +6,18 @@ API REST completa para controle de dieta diária com autenticação de usuários
 Uma API desenvolvida em Flask que permite aos usuários registrar e acompanhar suas refeições diárias. O sistema oferece autenticação baseada em sessões, CRUD completo de usuários e refeições, além de métricas sobre a dieta.
 
 ## ✨ Funcionalidades
-## 🔐 Autenticação
+### 🔐 Autenticação
 Login/Logout com sessões persistentes
 Proteção de rotas privadas
 Validação de credenciais
 
-## 👥 Gerenciamento de Usuários
+### 👥 Gerenciamento de Usuários
 Cadastro de múltiplos usuários
 Atualização de perfil
 Exclusão de conta (com proteção contra auto-exclusão)
 Isolamento de dados por usuário
 
-## 🍴 Controle de Refeições
+### 🍴 Controle de Refeições
 Registro de refeições com nome, descrição, data/hora
 Marcação de refeições dentro/fora da dieta
 Edição completa de refeições
@@ -25,7 +25,7 @@ Exclusão de refeições
 Listagem ordenada por data
 Métricas detalhadas da dieta
 
-## 🚀 Tecnologias
+### 🚀 Tecnologias
 Flask - Framework web minimalista
 Flask-SQLAlchemy - ORM para banco de dados
 Flask-Login - Gerenciamento de sessões
@@ -45,4 +45,4 @@ sample-flask-auth/
 ```
 
 ## 🗃️ Modelo de Dados
-### Tabela `user`
+ Tabela `*user*`
