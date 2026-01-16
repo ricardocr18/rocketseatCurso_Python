@@ -1,6 +1,6 @@
 # 🚀 RocketSeat - Python
 
-Repositório contendo os projetos desenvolvidos durante o curso **"Python - Intermediário"** da RocketSeat.
+Repositório contendo os projetos desenvolvidos durante o curso **"Python - Intermediário"** da [RocketSeat](https://www.rocketseat.com.br/).
 
 ## 📚 Estrutura do Repositório
 
@@ -9,7 +9,7 @@ Este repositório utiliza **branches separadas** para cada nível/projeto do cur
 | Branch | Descrição | Status |
 |--------|-----------|--------|
 | [`nivel2Desafio`](https://github.com/ricardocr18/rocketseatCurso_Python/tree/nivel2Desafio) | Desenvolvimento Avançado com Flask | ✅ Completo |
-| [`nivel3Desafio`](https://github.com/ricardocr18/rocketseatCurso_Python/tree/nivel3Desafio) | LLMs Fine Tuning | ✅ Completo |
+| [`nivel3Desafio`](https://github.com/ricardocr18/rocketseatCurso_Python/tree/nivel3Desafio) | Comunicação em tempo real com Flask | 🚧 Em Construção |
 
 
 ## 📥 Como Clonar um Projeto Específico
