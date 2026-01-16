@@ -45,18 +45,26 @@ sample-flask-auth/
 ```
 
 ## 🗃️ Modelo de Dados
- Tabela `**user**`
+### Tabela `**user**`
 ```
  id          # Integer, PK
 username    # String(80), único
 password    # String(50)
 ```
 Tabela `**meal**`
+```
 id          # Integer, PK
 name        # String(100)
 description # Text
 date_time   # DateTime
 is_on_diet  # Boolean
 user_id     # Integer, FK → user.id
+```
+
+Relacionamento: 1 usuário → N refeições
+
+🛣️ Rotas da API
+🔑 Autenticação
+Login
 
 
