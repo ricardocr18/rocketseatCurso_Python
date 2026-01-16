@@ -51,7 +51,7 @@ sample-flask-auth/
 username    # String(80), único
 password    # String(50)
 ```
-### Tabela `**meal**`
+### Tabela `` `meal` ``
 ```
 id          # Integer, PK
 name        # String(100)
@@ -63,8 +63,38 @@ user_id     # Integer, FK → user.id
 
 Relacionamento: 1 usuário → N refeições
 
-🛣️ Rotas da API
-🔑 Autenticação
+## 🛣️ Rotas da API
+### 🔑 Autenticação
 Login
+
+```
+POST /login
+Content-Type: application/json
+
+{
+    "username": "maria",
+    "password": "123"
+}
+```
+
+Resposta (200):
+```
+{
+    "message": "Credenciais estão ok, você está Logado no Sistema!!!"
+}
+```
+
+Logout
+```
+GET /logout
+```
+Resposta (200):
+```
+{
+    "message": "Logout realizado com sucesso"
+}
+```
+## 👤 Usuários
+Criar Usuário
 
 
