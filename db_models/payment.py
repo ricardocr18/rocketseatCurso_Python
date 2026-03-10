@@ -6,7 +6,7 @@ class Payment(db.Model):
     value = db.Column(db.Float) # Exemplo 10.50
     paid = db.Column(db.Boolean, default=False)
     bank_payment_id = db.Column(db.String(200), nullable=True) # UUID tem 36 caracteres
-    qr_code = db.Column(db.String(150), nullable=True)
+    qr_code = db.Column(db.String(250), nullable=True)
     expiration_date = db.Column(db.DateTime) # Exemplo 2025-01-01 01:01:00
 
 
