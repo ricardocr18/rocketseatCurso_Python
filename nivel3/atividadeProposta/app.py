@@ -74,6 +74,10 @@ def pix_confirmation():
 def payment_pix_page(pagament_id):
     payment = Payment.query.get(pagament_id) # aqui você pode pegar os dados do pagamento no banco de dados, onde você pode passar esses dados para o template payment.html para exibir as informações do pagamento para o usuário
 
+    # aqui estou verificando se o pagamento existe no banco de dados, caso contrário eu renderizo o template 404.html.
+    if not payment:
+        return render_template('404.html')
+
     if payment.paid:
         return render_template('confirmed_payment.html',
                                 payment_id=payment.id,
@@ -90,6 +94,10 @@ def payment_pix_page(pagament_id):
 @socketio.on('connect')
 def handle_connect():
     print('Cliente conectado to the Server')
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    print('Cliente desconectado do Server')
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
