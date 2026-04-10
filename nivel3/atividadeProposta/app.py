@@ -65,6 +65,7 @@ def pix_confirmation():
 
     payment.paid = True # aqui estou atualizando o campo paid do pagamento para True, onde isso significa que o pagamento foi confirmado pela instituição financeira
     db.session.commit() # aqui estou salvando a atualização do pagamento no banco de dados
+    socketio.emit(f'payment-confirmed-{payment.id}') # aqui estou emitindo um evento para o cliente, onde o cliente vai receber a notificação de que o pagamento foi confirmado
     return jsonify ({"message": "O pagamento foi confirmado"})
 
 # rota que vai ermitir que o usuário visualize o pagamento
@@ -72,7 +73,13 @@ def pix_confirmation():
 @app.route('/payments/pix/<int:pagament_id>', methods=['GET'])
 def payment_pix_page(pagament_id):
     payment = Payment.query.get(pagament_id) # aqui você pode pegar os dados do pagamento no banco de dados, onde você pode passar esses dados para o template payment.html para exibir as informações do pagamento para o usuário
-        
+
+    if payment.paid:
+        return render_template('confirmed_payment.html',
+                                payment_id=payment.id,
+                                value=payment.value) # aqui estamos renderizando o template confirmed_payment.html, onde esse template vai exibir uma mensagem de que o pagamento foi confirmado para o usuário
+    
+    # aqui estamos renderizando o template payment.html, onde esse template vai exibir as informações do pagamento para o usuário, como o valor do pagamento, o qr code para o usuário fazer o pagamento e a data de expiração do pagamento
     return render_template('payment.html',
                             payment_id=payment.id,
                             value=payment.value,

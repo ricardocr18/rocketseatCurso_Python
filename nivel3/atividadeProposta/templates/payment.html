@@ -60,9 +60,15 @@
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
     <script>
+      // Conecta ao servidor WebSocket para receber atualizações em tempo real
       var socket = io.connect('{{host}}');
       socket.on('connect', function() {
         console.log('Conectado ao servidor WebSocket');
+      });
+      // Escuta o evento de confirmação de pagamento específico para este pedido
+      socket.on('payment-confirmed-{{ payment_id }}', function() {
+        console.log('Pagamento confirmado!');
+        location.reload(); // Recarrega a página para mostrar a confirmação de pagamento
       });
     </script>
   </body>
