@@ -61,5 +61,10 @@ def payment_pix_page(pagament_id):
                             host="http://127.0.0.1:5000",
                             qr_code=payment.qr_code) # aqui estamos passando os dados do pagamento para o template payment.html, onde o template vai exibir as informações do pagamento para o usuário  
 
+# websockets
+@socketio.on('connect')
+def handle_connect():
+    print('Cliente conectado to the Server')
+
 if __name__ == '__main__':
     socketio.run(app, debug=True)
