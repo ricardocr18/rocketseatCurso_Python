@@ -15,7 +15,7 @@ socketio = SocketIO(app)
 # Rota que vai permitir que o usuário crie um pagamento via pix
 @app.route('/payments/pix', methods=['POST'])
 def create_payment_pix():
-    data = request.get_json()
+    data = request.get_json()  
 
     if 'value' not in data:
         return jsonify ({"message": "O campo value é obrigatório"}), 400
@@ -47,6 +47,24 @@ def get_image(file_name):
 # aqui será criado o WEBHOOK
 @app.route('/payments/pix/confirmation', methods=['POST'])
 def pix_confirmation():
+    data = request.get_json()
+
+      # validations
+    if "bank_payment_id" not in data and "value" not in data:
+        return jsonify ({"message": "Invalid payment data"}), 400
+    
+    # parament
+    payment = Payment.query.filter_by(bank_payment_id=data.get('bank_payment_id')).first()
+
+    if not payment or payment.paid:
+        return jsonify ({"message": "Payment not found"}), 404
+    
+    # aqui estou vendo se o pagamento feito pelo cliente é igual ao pagamento criado no banco de dados onde o valor do pagamento deve ser igual, caso contrário o pagamento é inválido
+    if data.get("value") != payment.value:
+        return jsonify ({"message": "Invalid payment data"}), 400
+
+    payment.paid = True # aqui estou atualizando o campo paid do pagamento para True, onde isso significa que o pagamento foi confirmado pela instituição financeira
+    db.session.commit() # aqui estou salvando a atualização do pagamento no banco de dados
     return jsonify ({"message": "O pagamento foi confirmado"})
 
 # rota que vai ermitir que o usuário visualize o pagamento
