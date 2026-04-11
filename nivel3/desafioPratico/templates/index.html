@@ -1,33 +1,124 @@
-<html>
-<!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Chat em Tempo Real</title>
-   </head>
-   <body>
-       <ul id="messages"></ul>
-       <form id="form" action="">
-           <input id="input" autocomplete="off" /><button>Enviar</button>
-       </form>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chat em Tempo Real</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:0;height:100vh;display:flex;flex-direction:column}
+    header{background:#374151;color:#fff;padding:12px 16px}
+    .wrap{display:flex;flex:1;overflow:hidden}
+    #users{width:220px;background:#f3f4f6;padding:12px;overflow:auto;border-right:1px solid #e5e7eb}
+    #chatWrap{flex:1;display:flex;flex-direction:column}
+    #messages{flex:1;padding:16px;overflow:auto;background:#fff}
+    .msg{margin:8px 0;padding:10px;border-radius:8px;max-width:70%}
+    .me{background:#d1fae5;margin-left:auto}
+    .other{background:#eef2ff}
+    .footer{display:flex;padding:12px;border-top:1px solid #e5e7eb;background:#fff}
+    input[type="text"]{flex:1;padding:10px;border-radius:6px;border:1px solid #cbd5e1}
+    button{margin-left:8px;padding:10px 14px;border-radius:6px;border:none;background:#2563eb;color:#fff;cursor:pointer}
+    small{color:#6b7280}
+    .typing{font-style:italic;color:#6b7280;margin-top:6px}
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Chat em Tempo Real</strong>
+    <div style="font-size:12px;margin-top:4px">Conecte-se e troque mensagens via Socket.IO</div>
+  </header>
 
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
-       <script>
-           var socket = io.connect('http://' + document.domain + ':' + location.port);
+  <div class="wrap">
+    <aside id="users">
+      <h4>Usuários</h4>
+      <ul id="usersList" style="padding-left:16px"></ul>
+    </aside>
 
-           socket.on('message', function(msg) {
-               var ul = document.getElementById('messages');
-               var li = document.createElement('li');
-               li.appendChild(document.createTextNode(msg));
-               ul.appendChild(li);
-           });
+    <div id="chatWrap">
+      <div id="messages"></div>
+      <div class="footer">
+        <input id="username" type="text" placeholder="Seu nome (ex: João)" style="width:160px;margin-right:8px"/>
+        <input id="input" type="text" placeholder="Digite sua mensagem..." />
+        <button id="send">Enviar</button>
+      </div>
+      <div style="padding:6px 12px"><small id="status">Status: desconectado</small> <span id="typing" class="typing"></span></div>
+    </div>
+  </div>
 
-           document.getElementById('form').onsubmit = function() {
-               socket.emit('message', document.getElementById('input').value);
-               document.getElementById('input').value = '';
-               return false;
-           };
-       </script>
-   </body>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script>
+    const socket = io({transports:['websocket','polling']});
+    const messages = document.getElementById('messages');
+    const usersList = document.getElementById('usersList');
+    const input = document.getElementById('input');
+    const send = document.getElementById('send');
+    const usernameInput = document.getElementById('username');
+    const status = document.getElementById('status');
+    const typingEl = document.getElementById('typing');
+
+    function append(text, cls){
+      const d = document.createElement('div');
+      d.className = 'msg ' + cls;
+      d.textContent = text;
+      messages.appendChild(d);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    socket.on('connect', () => {
+      status.textContent = 'Status: conectado';
+      const name = usernameInput.value.trim() || ('User-'+socket.id.slice(0,5));
+      socket.emit('join', {username: name});
+    });
+
+    socket.on('disconnect', () => {
+      status.textContent = 'Status: desconectado';
+    });
+
+    socket.on('users', (list) => {
+      usersList.innerHTML = '';
+      list.forEach(u => {
+        const li = document.createElement('li');
+        li.textContent = u;
+        usersList.appendChild(li);
+      });
+    });
+
+    socket.on('user_joined', (data) => {
+      append(`${data.username} entrou no chat.`, 'other');
+      // request updated users list (server already broadcasts users list on connect/join in many impls)
+    });
+
+    socket.on('user_left', (data) => {
+      append(`${data.username} saiu do chat.`, 'other');
+    });
+
+    socket.on('message', (payload) => {
+      const text = `${payload.username}: ${payload.message}`;
+      append(text, payload.username && payload.username.startsWith('User-') && payload.username.includes(socket.id.slice(0,5)) ? 'me' : 'other');
+    });
+
+    socket.on('typing', (d) => {
+      if(d && d.username && d.typing){
+        typingEl.textContent = `${d.username} digitando...`;
+        setTimeout(()=>{ typingEl.textContent = ''; }, 1200);
+      } else {
+        typingEl.textContent = '';
+      }
+    });
+
+    function sendMessage(){
+      const text = input.value.trim();
+      if(!text) return;
+      const name = usernameInput.value.trim() || ('User-'+socket.id.slice(0,5));
+      socket.emit('message', {username: name, message: text});
+      append(`${name}: ${text}`, 'me');
+      input.value = '';
+    }
+
+    send.addEventListener('click', sendMessage);
+    input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ sendMessage(); e.preventDefault(); } else { socket.emit('typing', {username: usernameInput.value||('User-'+socket.id.slice(0,5)), typing:true}); } });
+
+    // limpar sessão antiga (opcional) para evitar invalid session
+    try{ sessionStorage.removeItem('socket.io'); }catch(e){}
+  </script>
+</body>
 </html>
