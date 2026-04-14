@@ -65,12 +65,32 @@ Para facilitar a visualização ou baixar apenas o conteúdo desta pasta:
 
 ---
 
-# 🎮 desafioPratico
-O projeto **RetroGame** é um assistente de IA focado na experiência de usuários colecionadores de consoles antigos (80s e 90s).
+# 🎮 desafioPratico - Chat em Tempo Real
 
-### 📄 Arquivos de Configuração
-* **`retroGame.pdf`**: Documento de Produto (Grounding). Contém o catálogo de consoles, tabela de preços e regras de carência.
-* **`assistenteRetroGame.pdf`**: Engenharia de Prompt. Define a persona, regras de concisão e protocolos anti-leak.
+Esta pasta contém o desenvolvimento de uma aplicação de **Chat Multiusuário** com atualização instantânea. O foco deste desafio foi implementar a comunicação bidirecional entre cliente e servidor, permitindo que mensagens sejam enviadas e recebidas sem a necessidade de atualizar a página.
+
+### 🛠️ Funcionalidades Principais
+* **Comunicação Bidirecional:** Utilização de WebSockets para troca de mensagens instantâneas.
+* **Interface Dinâmica:** Identificação de usuários e estilização diferenciada para mensagens enviadas e recebidas.
+* **Status de Conexão:** Monitoramento em tempo real do estado da conexão com o servidor.
+
+### 🏗️ Estrutura do Projeto
+* **`app.py`**: Servidor Flask configurado com Flask-SocketIO para gerenciar os eventos de chat.
+* **`templates/index.html`**: Interface do usuário com scripts para manipulação de eventos do lado do cliente.
+* **`static/`**: Estilização (CSS) para garantir a legibilidade da conversa.
+
+### 💬 Demonstração da Comunicação (Socket.IO)
+Abaixo, é possível observar a aplicação rodando em duas instâncias diferentes do navegador, simulando a interação em tempo real entre dois usuários ("Ricardo" e "Pedro"):
+
+<img width="900" alt="Demonstração Chat em Tempo Real" src="https://github.com/user-attachments/assets/1d3f9661-000c-486a-848e-282e4e466f28" />
+
+---
+
+### 📥 Acesso (Download Facilitado)
+Para facilitar o acesso, você pode visualizar ou baixar apenas o conteúdo desta pasta:
+
+1. 🚀 **Visualização Rápida:** [Clique aqui para abrir o código no Editor Web](https://github.dev/ricardocr18/rocketseatCurso_Python/tree/main/nivel3/desafioPratico) (Pressione `.` no teclado).
+2. 📦 **Download Direto (.zip):** [Clique aqui para baixar apenas esta pasta](https://download-directory.github.io/?url=https://github.com/ricardocr18/rocketseatCurso_Python/tree/main/nivel3/desafioPratico).
 
 ---
 
