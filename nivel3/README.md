@@ -53,6 +53,7 @@ A organização dos arquivos segue o padrão de responsabilidades do Flask:
     *Acesse em: `http://127.0.0.1:5000`*
 
 ### 📸 Demonstração do Browser
+*Pesquisa de dados via ID (Exemplo ID 5) e Confirmação de Pagamento (Exemplo ID 1):*
 <img width="600" alt="Tela de Cadastro" src="https://github.com/user-attachments/assets/91cac3c7-88bb-491e-89a3-71ce6c5cafcf" />
 <img width="600" alt="Pagamento Realizado" src="https://github.com/user-attachments/assets/15b3c33f-db46-48ec-ab45-ccba43d57633" />
 
