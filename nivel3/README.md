@@ -1,117 +1,85 @@
-# 🚀 RocketSeat - AtividadeProposta (PIX + SocketIO)
+# 🚀 Nível 3 - Comunicação em tempo real com Flask
 
-Descrição
----------
-Projeto exemplo em Flask + Flask-SocketIO que simula pagamentos via PIX (QR code fictício). Contém back-end, templates e imagens de QR.  
+Bem-vindo ao diretório do **Nível 3**. Este espaço centraliza o aprendizado prático de APIs robustas com Flask e Flask-SocketIO
 
-Status
-------
-- ✅ Funcional em ambiente de desenvolvimento
-- ⚠️ Banco local em `instance/database.db`
+## 📂 Estrutura do Diretório
 
-Pré-requisitos
---------------
-- Python 3.10+
-- Dependências em `requirements.txt`
+1.  **📝 [atividadeProposta](#-atividadeproposta)**: Simulador PIX, plicação back-end em Flask com comunicação em tempo real via SocketIO.
+2.  **🎮 [desafioPrático](#-desafiopratico)**:.
 
-Instalação (Windows / PowerShell)
----------------------------------
-1. Criar/ativar virtualenv (se necessário):
-```powershell
-python -m venv .venv
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned -Force
-.\.venv\Scripts\Activate.ps1
-```
+---
 
-2. Instalar dependências:
-```powershell
-pip install -r requirements.txt
-```
+# 📝 atividadeProposta
+Esta pasta contém um projeto exemplo em **Flask + Flask-SocketIO** que simula um ecossistema de pagamentos via PIX.
 
-4. Criar tabelas do banco (gera `instance/database.db` se não existir):
-```powershell
-python -c "from app import app; from repository.database import db; 
-with app.app_context(): db.create_all(); print('tables created')"
-```
+### 🛠️ Funcionalidades Principais
+* **Geração de Pagamentos:** Criação de transações PIX com QR Codes fictícios.
+* **Webhooks de Confirmação:** Simulação de retorno bancário para confirmação de pagamento.
+* **Real-time:** Notificações instantâneas via SocketIO.
+* **Interface:** Visualização de status de pagamento em páginas HTML dinâmicas.
 
-5. Rodar a aplicação:
-```powershell
-python app.py
-```
-A aplicação ficará disponível em: `http://127.0.0.1:5000`
+### 🏗️ Estrutura do Projeto
+A organização dos arquivos segue o padrão de responsabilidades do Flask:
+* **`app.py`**: Inicialização do Flask + SocketIO e definição das rotas principais.
+* **`db_models/`**: Definição dos modelos de dados (ex.: `payment.py`).
+* **`repository/`**: Camada de conexão e persistência com o banco de dados (`database.py`).
+* **`static/`**: Arquivos estáticos como CSS e imagens dos QR Codes gerados.
+* **`templates/`**: Páginas HTML renderizadas pelo servidor.
+* **`instance/`**: Armazena o banco de dados local (SQLite). *Nota: Esta pasta costuma ser excluída do versionamento.*
 
-Estrutura principal
--------------------
-- `app.py` — rotas + inicialização Flask + SocketIO  
-- `db_models/payment.py` — model `Payment`  
-- `repository/database.py` — `db = SQLAlchemy()`  
-- `instance/database.db` — banco sqlite local 
-- `static/` — CSS, imagens, QR codes  
-- `templates/` — `payment.html`, `confirmed_payment.html`, `404.html`  
+### 🔌 Endpoints Importantes
 
-Endpoints importantes
----------------------
-- `POST /payments/pix`  
-  - Body JSON: `{ "value": 150.0 }`  
-  - Retorna: 201 com o objeto `payment` (id, value, bank_payment_id, qr_code, ...)
+| Método | Rota | Descrição |
+| :--- | :--- | :--- |
+| `POST` | `/payments/pix` | Cria um pagamento (Body JSON: `{ "value": 150.0 }`) |
+| `GET` | `/payments/pix/qr_code/<file>` | Recupera a imagem do QR Code gerado |
+| `POST` | `/payments/pix/confirmation` | Webhook para confirmar pagamento |
+| `GET` | `/payments/pix/<id>` | Renderiza a página de status do pagamento |
 
-- `GET /payments/pix/qr_code/<file_name>`  
-  - Retorna imagem `static/img/<file_name>.png`
+### 🚀 Como Rodar a Aplicação
 
-- `POST /payments/pix/confirmation` (webhook simulado)
-  - Body JSON (ex.):
-  ```json
-  {
-    "bank_payment_id": "ed5cc771-b2b1-418a-bf61-5eadeb913306",
-    "value": 650
-  }
-  ```
-  - Respostas:
-    - `200` — pagamento confirmado
-    - `400` — dados inválidos
-    - `404` — payment not found
+1.  **Instalar dependências:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+2.  **Criar o Banco de Dados:**
+    ```bash
+    python -c "from app import app; from repository.database import db; with app.app_context(): db.create_all(); print('Tabelas criadas!')"
+    ```
+3.  **Iniciar o servidor:**
+    ```bash
+    python app.py
+    ```
+    *Acesse em: `http://127.0.0.1:5000`*
 
-- `GET /payments/pix/<int:id>`  
-  - Renderiza a página do pagamento (template HTML)
+### 📸 Demonstração do Browser
+<img width="600" alt="Tela de Cadastro" src="https://github.com/user-attachments/assets/91cac3c7-88bb-491e-89a3-71ce6c5cafcf" />
+<img width="600" alt="Pagamento Realizado" src="https://github.com/user-attachments/assets/15b3c33f-db46-48ec-ab45-ccba43d57633" />
 
-Dicas de uso / testes
----------------------
-- No Postman: defina header `Content-Type: application/json`.
-- Exemplo curl (criar pagamento):
-```bash
-curl -X POST http://127.0.0.1:5000/payments/pix \
-  -H "Content-Type: application/json" \
-  -d '{"value":150.0}'
-```
-- Exemplo curl (confirmar pagamento):
-```bash
-curl -X POST http://127.0.0.1:5000/payments/pix/confirmation \
-  -H "Content-Type: application/json" \
-  -d '{"bank_payment_id":"<id>","value":650}'
-```
+### 📥 Acesso (Download Facilitado)
+Para facilitar a visualização ou baixar apenas o conteúdo desta pasta:
 
-Banco de dados
---------------
-- Arquivo: `instance/database.db`  
-- Para inspecionar tabelas (PowerShell):
-```powershell
-python - <<'PY'
-import sqlite3
-p="instance/database.db"
-conn=sqlite3.connect(p)
-print(conn.execute("SELECT name FROM sqlite_master WHERE type='table';").fetchall())
-conn.close()
-PY
-```
-- NÃO comitar: `instance/` e `*.db`.
+1.  🚀 **Visualização Rápida:** [Clique aqui para abrir o código no Editor Web](https://github.dev/ricardocr18/rocketseatCurso_Python/tree/main/nivel3/atividadeProposta) (Pressione `.` no teclado).
+2.  📦 **Download Direto (.zip):** [Clique aqui para baixar apenas esta pasta](https://download-directory.github.io/?url=https://github.com/ricardocr18/rocketseatCurso_Python/tree/main/nivel3/atividadeProposta).
 
-Sugestão `.gitignore`
----------------------
-```
+---
 
+# 🎮 desafioPratico
+O projeto **RetroGame** é um assistente de IA focado na experiência de usuários colecionadores de consoles antigos (80s e 90s).
 
+### 📄 Arquivos de Configuração
+* **`retroGame.pdf`**: Documento de Produto (Grounding). Contém o catálogo de consoles, tabela de preços e regras de carência.
+* **`assistenteRetroGame.pdf`**: Engenharia de Prompt. Define a persona, regras de concisão e protocolos anti-leak.
 
+---
 
+## 🛠️ Tecnologias e Técnicas Utilizadas
+* **Back-end:** Python, Flask, Flask-SQLAlchemy, Flask-SocketIO.
+* **IA Generativa:** Engenharia de Prompt (Few-Shot, Zero-Shot), Grounding em PDFs.
 
+## 🚀 Como Executar o Nível 3
+* **Scripts Python:** Siga as instruções de instalação na seção `#atividadeProposta`.
+* **Assistente de IA:** Carregue os PDFs da pasta `#desafioPratico` no **NotebookLM**.
 
-
+---
+*Nota: Este repositório faz parte da Pós-Graduação em IA Generativa e Alta Performance.*
