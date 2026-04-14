@@ -1,26 +1,31 @@
-# 🚀 RocketSeat - Python
+# 🚀 Trilhas de Aprendizado - Rocketseat Python
 
-Repositório contendo os projetos desenvolvidos durante o curso **"Python - Intermediário"** da [RocketSeat](https://www.rocketseat.com.br/).
+Repositório das atividades e projetos desenvolvidos durante o curso **"Python - Intermediário"** da [RocketSeat](https://www.rocketseat.com.br/).
 
-## 📚 Estrutura do Repositório
+## 📂 Estrutura do Repositório
 
-Este repositório utiliza **branches separadas** para cada nível/projeto do curso:
+| Pasta | Descrição Técnica | Status | Atalho |
+| :--- | :--- | :--- | :--- |
+| **[nivel2](./nivel2/)** | Desenvolvimento Avançado com Flask | ✅ Concluído | [Acessar](./nivel2/) |
+| **[nivel3](./nivel3/)** | Comunicação Real-time com Flask e SocketlO | ✅ Concluído | [Acessar](./nivel3/) |
 
-| Branch | Descrição | Status |
-|--------|-----------|--------|
-| [`nivel2Desafio`](https://github.com/ricardocr18/rocketseatCurso_Python/tree/nivel2Desafio) | Desenvolvimento Avançado com Flask | ✅ Completo |
-| [`nivel3Desafio`](https://github.com/ricardocr18/rocketseatCurso_Python/tree/nivel3Desafio) | Comunicação em tempo real com Flask | 🚧 Em Construção |
+---
 
+## 👨‍🏫 Guia de Visualização dos Repositórios
 
-## 📥 Como Clonar um Projeto Específico
+Para facilitar a visualização e avaliação sem a necessidade de baixar todo o repositório:
 
-Para clonar apenas um nível específico:
+### 💻 Visualização Online
+Pressione a tecla `.` (ponto) em qualquer lugar deste repositório para abrir o **Editor Web (VS Code)**. Isso permite navegar pelas pastas e ler o código instantaneamente no navegador.
 
-```bash
-# Exemplo: Clonar apenas o Nível 2
-git clone -b nivel2Desafio https://github.com/ricardocr18/rocketseatCurso_Python.git nivel2Desafio
-cd nivel2Desafio
-```
+### 📥 Download de Pastas Específicas
+Se preferir baixar apenas os arquivos de uma atividade (nível):
+1. Navegue até a pasta desejada (Ex: `nivel3`).
+2. No **README** interno da pasta, utilize o link de **Download Direto (.zip)**.
+3. Isso evita o download desnecessário de conteúdos de outros módulos ou níveis.
+
+---
+⭐ **Dica:** Navegue pelas pastas para encontrar os guias de execução e requisitos de cada projeto.
 
 ## 📄 Licença
 Este projeto é de código aberto e está disponível para fins educacionais.
@@ -28,6 +33,3 @@ Este projeto é de código aberto e está disponível para fins educacionais.
 ## 👨‍💻 Autor
 **Ricardo Ribeiro**
 
----
-
-⭐ **Dica:** Navegue pelas branches para ver cada projeto!
