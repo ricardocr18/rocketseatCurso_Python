@@ -6,8 +6,8 @@ Repositório das atividades e projetos desenvolvidos durante o curso **"Python -
 
 | Pasta | Descrição Técnica | Status | Atalho |
 | :--- | :--- | :--- | :--- |
-| **[nivel2](./nivel2/)** | Desenvolvimento Avançado com Flask | ✅ Concluído | [Acessar](./nivel2/) |
-| **[nivel3](./nivel3/)** | Comunicação Real-time com Flask e SocketlO | ✅ Concluído | [Acessar](./nivel3/) |
+| **[nivel 2](./nivel2/)** | Desenvolvimento Avançado com Flask | ✅ Concluído | [Acessar](./nivel2/) |
+| **[nivel 3](./nivel3/)** | Comunicação Real-time com Flask e SocketlO | ✅ Concluído | [Acessar](./nivel3/) |
 
 ---
 
