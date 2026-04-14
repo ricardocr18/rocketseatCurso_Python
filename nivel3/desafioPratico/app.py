@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret!'
+app.config['SECRET_KEY'] = 'secret!' # Necessário para sessões do SocketIO
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 @app.route('/')
@@ -16,7 +16,8 @@ def on_connect():
 
 @socketio.on('message')
 def handle_message(msg):
-    emit('message', msg, broadcast=True)
+    msg['sid'] = request.sid
+    emit('message', msg, broadcast=True, include_self=False)
     print(f'Message: {msg}')
 
 @socketio.on('disconnect')

@@ -92,8 +92,9 @@
     });
 
     socket.on('message', (payload) => {
+      const isMe = payload.sid === socket.id;
       const text = `${payload.username}: ${payload.message}`;
-      append(text, payload.username && payload.username.startsWith('User-') && payload.username.includes(socket.id.slice(0,5)) ? 'me' : 'other');
+      append(text, isMe ? 'me' : 'other');
     });
 
     socket.on('typing', (d) => {
@@ -109,7 +110,9 @@
       const text = input.value.trim();
       if(!text) return;
       const name = usernameInput.value.trim() || ('User-'+socket.id.slice(0,5));
+      // envia mensagem; servidor irá anexar seu sid e broadcast para os outros
       socket.emit('message', {username: name, message: text});
+      // adiciona localmente como "me" para resposta imediata
       append(`${name}: ${text}`, 'me');
       input.value = '';
     }
