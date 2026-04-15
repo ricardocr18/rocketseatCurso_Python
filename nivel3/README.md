@@ -5,7 +5,7 @@ Bem-vindo ao diretório do **Nível 3**. Este espaço centraliza o aprendizado p
 ## 📂 Estrutura do Diretório
 
 1.  **📝 [atividadeProposta](#-atividadeproposta)**: Simulador PIX, plicação back-end em Flask com comunicação em tempo real via SocketIO.
-2.  **🎮 [desafioPrático](#-desafiopratico)**:.
+2.  **🎮 [desafioPrático](#-desafiopratico)**: Foi o Desafio do Nivel 3, desenvolvimento de uma aplicação de **Chat Multiusuário**.
 
 ---
 
@@ -82,7 +82,7 @@ Esta pasta contém o desenvolvimento de uma aplicação de **Chat Multiusuário*
 ### 💬 Demonstração da Comunicação (Socket.IO)
 Abaixo, é possível observar a aplicação rodando em duas instâncias diferentes do navegador, simulando a interação em tempo real entre dois usuários ("Ricardo" e "Pedro"):
 
-<img width="900" alt="Demonstração Chat em Tempo Real" src="https://github.com/user-attachments/assets/1d3f9661-000c-486a-848e-282e4e466f28" />
+<img width="1915" height="1017" alt="Demonstração Chat em Tempo Real" src="https://github.com/user-attachments/assets/8be1b153-63c9-4478-8252-dae02b456c54" />
 
 ---
 
@@ -93,14 +93,4 @@ Para facilitar o acesso, você pode visualizar ou baixar apenas o conteúdo dest
 2. 📦 **Download Direto (.zip):** [Clique aqui para baixar apenas esta pasta](https://download-directory.github.io/?url=https://github.com/ricardocr18/rocketseatCurso_Python/tree/main/nivel3/desafioPratico).
 
 ---
-
-## 🛠️ Tecnologias e Técnicas Utilizadas
-* **Back-end:** Python, Flask, Flask-SQLAlchemy, Flask-SocketIO.
-* **IA Generativa:** Engenharia de Prompt (Few-Shot, Zero-Shot), Grounding em PDFs.
-
-## 🚀 Como Executar o Nível 3
-* **Scripts Python:** Siga as instruções de instalação na seção `#atividadeProposta`.
-* **Assistente de IA:** Carregue os PDFs da pasta `#desafioPratico` no **NotebookLM**.
-
----
-*Nota: Este repositório faz parte da Pós-Graduação em IA Generativa e Alta Performance.*
+*Nota: Este repositório faz parte do curso de Python*
