@@ -65,9 +65,9 @@ Para facilitar a visualização ou baixar apenas o conteúdo desta pasta:
 
 ---
 
-# 🎮 desafioPratico - Chat em Tempo Real
+# 🎮 desafioPrático
 
-Esta pasta contém o desenvolvimento de uma aplicação de **Chat Multiusuário** com atualização instantânea. O foco deste desafio foi implementar a comunicação bidirecional entre cliente e servidor, permitindo que mensagens sejam enviadas e recebidas sem a necessidade de atualizar a página.
+Esta pasta contém o desenvolvimento de uma aplicação de **Chat Multiusuário, em tempo Real** com atualização instantânea. O foco deste desafio foi implementar a comunicação bidirecional entre cliente e servidor, permitindo que mensagens sejam enviadas e recebidas sem a necessidade de atualizar a página.
 
 ### 🛠️ Funcionalidades Principais
 * **Comunicação Bidirecional:** Utilização de WebSockets para troca de mensagens instantâneas.
