@@ -5,7 +5,7 @@ Bem-vindo ao diretório do **Nível 3**. Este espaço centraliza o aprendizado p
 ## 📂 Estrutura do Diretório
 
 1.  **📝 [atividadeProposta](#-atividadeproposta)**: Simulador PIX, plicação back-end em Flask com comunicação em tempo real via SocketIO.
-2. 🎮 [desafioPrático](#-desafiopratico): Desenvolvimento de uma aplicação de Chat Multiusuário e Assistente de IA.
+2. 🎮 [desafioPrático](#desafio-pratico): Foi o Desafio do Nivel 3, desenvolvimento de uma aplicação de **Chat Multiusuário**.
 
 ---
 
