@@ -8,6 +8,7 @@ Repositório das atividades e projetos desenvolvidos durante o curso **"Python -
 | :--- | :--- | :--- | :--- |
 | **Nível 2** | Desenvolvimento Avançado com Flask | ✅ Concluído | [Ver Conteúdo](./nivel2/) |
 | **Nível 3** | Comunicação Real-time com Flask e SocketlO | ✅ Concluído | [Ver Conteúdo](./nivel3/) |
+| **Nível 4** | Introdução ao Design de Código | 🚧 Em Construção | [Ver Conteúdo](./nivel4/) |
 
 ---
 
